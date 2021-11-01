@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+spec:
+  selector:
+    matchLabels:
+      app: nodejs-memusage
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: node-memusage
+    spec:
+      containers:
+      - name: node-memusage
+        image: aniketchopade/node-memusage
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "250m"        
